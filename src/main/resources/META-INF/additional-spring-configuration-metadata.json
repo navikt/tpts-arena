@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "app.arena.kafka.consumer.topic",
+      "type": "java.lang.String",
+      "description": "Name of Kafka topic to consume from Arena."
+    }
+  ]
+}

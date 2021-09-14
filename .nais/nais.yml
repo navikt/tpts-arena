@@ -1,0 +1,23 @@
+apiVersion: nais.io/v1alpha1
+kind: Application
+metadata:
+  name: tpts-arena
+  namespace: tpts
+  labels:
+    team: tpts
+spec:
+  image: {{ image }}
+  ingresses:
+    - https://tpts-arena.dev.intern.nav.no
+  healthcheck:
+    liveness:
+      path: /actuator/health/liveness
+      initialDelay: 10
+      timeout: 2
+    readiness:
+      path: /actuator/health/readiness
+      initialDelay: 10
+      timeout: 2
+    prometheus:
+      enabled: true
+      path: /actuator/prometheus

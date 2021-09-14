@@ -1,0 +1,29 @@
+spring:
+  kafka:
+    bootstrap-servers: "localhost:9092" # Your local Docker.
+    consumer:
+      auto-commit-interval: 100
+      auto-offset-reset: latest
+      enable-auto-commit: true
+      group-id: "must_find_proper_group_id"
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+management:
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics, prometheus
+
+app:
+  arena:
+    kafka:
+      consumer:
+        topic: "must_find_proper_topic"
