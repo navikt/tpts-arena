@@ -7,6 +7,9 @@ metadata:
     team: tpts
 spec:
   image: {{ image }}
+  replicas:
+    max: 1
+    min: 1
   ingresses:
     - https://tpts-arena.dev.intern.nav.no
   kafka:
