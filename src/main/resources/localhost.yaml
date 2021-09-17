@@ -1,8 +1,15 @@
+#
+# Run with program argument --spring.config.name=localhost for this configuration to take effect.
+#
+# Will keep looking for a localhost Kafka broker, see spring.kafka.bootstrap-servers.
+# Also, you might want to change app.arena.kafka.consumer.topic to match your local setup.
+#
+
 spring:
   application:
     name: "tpts-arena"
   kafka:
-    bootstrap-servers: ${KAFKA_BROKERS}
+    bootstrap-servers: "localhost:9092" # Your local Docker.
     consumer:
       auto-commit-interval: 100
       auto-offset-reset: latest
@@ -13,18 +20,6 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    properties:
-      security:
-        protocol: "SSL"
-      ssl:
-        keystore:
-          type: "PKCS12"
-          location: ${KAFKA_KEYSTORE_PATH}
-          password: ${KAFKA_CREDSTORE_PASSWORD}
-        truststore:
-          type: "PKCS12"
-          location: ${KAFKA_TRUSTSTORE_PATH}
-          password: ${KAFKA_CREDSTORE_PASSWORD}
 
 management:
   metrics:
