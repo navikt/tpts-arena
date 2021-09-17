@@ -26,4 +26,4 @@ app:
   arena:
     kafka:
       consumer:
-        topic: "must_find_proper_topic"
+        topic: "aura.kafkarator-canary-dev-gcp"

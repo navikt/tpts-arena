@@ -9,6 +9,8 @@ spec:
   image: {{ image }}
   ingresses:
     - https://tpts-arena.dev.intern.nav.no
+  kafka:
+    pool: nav-dev
   healthcheck:
     liveness:
       path: /actuator/health/liveness
