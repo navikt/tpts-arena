@@ -71,7 +71,7 @@ class ArenaKafkaControllerTest {
         String[] sent = new String[12];
         for (int i = 0; i < sent.length; i++) {
             sent[i] = UUID.randomUUID().toString();
-            template.send(config.getConsumer().getTopic(), 1, System.currentTimeMillis(), "testKey" + i, sent[i]);
+            template.send(config.getConsumer().getTopic(), 1, System.nanoTime(), "testKey" + i, sent[i]);
         }
 
         String[] received =
