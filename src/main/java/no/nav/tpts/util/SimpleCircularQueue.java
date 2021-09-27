@@ -29,9 +29,7 @@ public class SimpleCircularQueue<K> {
 
     @Synchronized
     public List<K> getAll() {
-        List<K> all = List.copyOf(queue);
-        queue.clear();
-        return all;
+        return List.copyOf(queue);
     }
 
     @Synchronized
