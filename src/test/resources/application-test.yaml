@@ -8,8 +8,17 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    security:
-      protocol: "PLAINTEXT"
+    properties:
+      security:
+        protocol: "PLAINTEXT"
+      ssl:
+        keystore:
+          location: "n/a"
+          password: "n/a"
+        truststore:
+          location: "n/a"
+          password: "n/a"
+
 
 app:
   arena:
