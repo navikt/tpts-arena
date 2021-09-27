@@ -1,6 +1,8 @@
 spring:
   application:
     name: "tpts-arena"
+  main:
+    banner-mode: off
   kafka:
     bootstrap-servers: ${KAFKA_BROKERS}
     consumer:
