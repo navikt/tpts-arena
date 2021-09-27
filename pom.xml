@@ -18,6 +18,7 @@
     <properties>
         <java.version>16</java.version>
 
+        <logstash.version>6.6</logstash.version>
         <swagger.version>3.0.0</swagger.version>
         <testcontainers.version>1.16.0</testcontainers.version>
     </properties>
@@ -62,6 +63,13 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash.version}</version>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>

@@ -31,6 +31,9 @@ management:
       exposure:
         include: info, health, metrics, prometheus
 
+logging:
+  config: classpath:logback-localhost.xml
+
 app:
   arena:
     kafka:
