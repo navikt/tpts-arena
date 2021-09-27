@@ -29,6 +29,8 @@ public class ArenaKafkaConfig {
         @NonNull
         private String topic;
 
+        private String[] validators;
+
     }
 
     @Bean

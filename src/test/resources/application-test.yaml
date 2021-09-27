@@ -25,3 +25,5 @@ app:
     kafka:
       consumer:
         topic: testTopic
+        validators:
+          - "no.nav.tpts.arena.validation.UuidValidator"

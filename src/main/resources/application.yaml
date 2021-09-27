@@ -44,3 +44,5 @@ app:
     kafka:
       consumer:
         topic: "aura.kafkarator-canary-dev-gcp"
+        validators:
+          - "no.nav.tpts.arena.validation.TimestampValidator"
