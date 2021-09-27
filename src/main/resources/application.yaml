@@ -26,6 +26,9 @@ spring:
           location: ${KAFKA_TRUSTSTORE_PATH}
           password: ${KAFKA_CREDSTORE_PASSWORD}
 
+server:
+  shutdown: graceful
+
 management:
   metrics:
     export:
