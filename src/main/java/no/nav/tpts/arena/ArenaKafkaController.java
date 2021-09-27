@@ -9,18 +9,23 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
 
 @RestController
-@RequestMapping(path = "/arena")
+@RequestMapping
 @RequiredArgsConstructor
 public class ArenaKafkaController {
 
     private final ArenaKafkaService consumer;
 
     @GetMapping
+    public void root() {
+        // Does nothing.
+    }
+
+    @GetMapping(path = "/arena")
     public Collection<String> getCachedContent() {
         return consumer.getContent();
     }
 
-    @DeleteMapping
+    @DeleteMapping(path = "/arena")
     public void deleteCachedContent() {
         consumer.deleteContent();
     }
