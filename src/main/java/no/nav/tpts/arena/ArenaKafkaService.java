@@ -1,5 +1,7 @@
 package no.nav.tpts.arena;
 
+import io.micrometer.core.instrument.Counter;
+import io.micrometer.prometheus.PrometheusMeterRegistry;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import no.nav.tpts.arena.validation.ArenaKafkaValidationException;
@@ -17,16 +19,20 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
 public class ArenaKafkaService {
 
-    private final ArenaKafkaConfig config;
+    private final String topic;
+    private final Counter validationSuccess;
+    private final Counter validationFailure;
     private final SimpleCircularQueue<String> queue = new SimpleCircularQueue<>(10);
     private final List<ArenaKafkaValidator> validators = new ArrayList<>();
 
-    @PostConstruct
-    public void postConstruct() {
+    public ArenaKafkaService(ArenaKafkaConfig config, PrometheusMeterRegistry registry) {
+        topic = config.getConsumer().getTopic();
+        validationSuccess = registry.counter("validation", "outcome", "SUCCESS");
+        validationFailure = registry.counter("validation", "outcome", "FAILURE");
+
         Optional
                 .ofNullable(config.getConsumer().getValidators())
                 .ifPresent(validatorsClassNames -> Arrays
@@ -57,14 +63,16 @@ public class ArenaKafkaService {
 
     @KafkaListener(topics = "${app.arena.kafka.consumer.topic}")
     public void consume(ConsumerRecord<String, String> content) {
-        log.info("Received content {} from topic {}", content, config.getConsumer().getTopic());
+        log.info("Received content {} from topic {}", content, topic);
         try {
             for (ArenaKafkaValidator validator : validators) {
                 validator.validate(content);
             }
             queue.put(content.value());
+            validationSuccess.increment();
         } catch (ArenaKafkaValidationException e) {
             log.error("Validation failed", e);
+            validationFailure.increment();
         }
     }
 
