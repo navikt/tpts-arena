@@ -14,15 +14,14 @@ spec:
     - https://tpts-arena.dev.intern.nav.no
   kafka:
     pool: nav-dev
-  healthcheck:
-    liveness:
-      path: /actuator/health/liveness
-      initialDelay: 10
-      timeout: 2
-    readiness:
-      path: /actuator/health/readiness
-      initialDelay: 10
-      timeout: 2
-    prometheus:
-      enabled: true
-      path: /actuator/prometheus
+  liveness:
+    path: /actuator/health/liveness
+    initialDelay: 10
+    timeout: 2
+  readiness:
+    path: /actuator/health/readiness
+    initialDelay: 10
+    timeout: 2
+  prometheus:
+    enabled: true
+    path: /actuator/prometheus
