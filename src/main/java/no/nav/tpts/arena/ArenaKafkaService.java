@@ -2,7 +2,6 @@ package no.nav.tpts.arena;
 
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.prometheus.PrometheusMeterRegistry;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import no.nav.tpts.arena.validation.ArenaKafkaValidationException;
 import no.nav.tpts.arena.validation.ArenaKafkaValidator;
@@ -12,7 +11,6 @@ import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ClassUtils;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -30,8 +28,8 @@ public class ArenaKafkaService {
 
     public ArenaKafkaService(ArenaKafkaConfig config, PrometheusMeterRegistry registry) {
         topic = config.getConsumer().getTopic();
-        validationSuccess = registry.counter("validation", "outcome", "SUCCESS");
-        validationFailure = registry.counter("validation", "outcome", "FAILURE");
+        validationSuccess = registry.counter("kafka_consumer_validation", "outcome", "SUCCESS");
+        validationFailure = registry.counter("kafka_consumer_validation", "outcome", "FAILURE");
 
         Optional
                 .ofNullable(config.getConsumer().getValidators())

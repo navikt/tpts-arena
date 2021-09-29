@@ -36,6 +36,8 @@ management:
     export:
       prometheus:
         enabled: true
+    tags:
+      - app: "tpts-arena"
   endpoints:
     web:
       exposure:
