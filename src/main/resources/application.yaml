@@ -45,6 +45,5 @@ app:
   arena:
     kafka:
       consumer:
-        topic: "aura.kafkarator-canary-dev-gcp"
-        validators:
-          - "no.nav.tpts.arena.validation.TimestampValidator"
+        #topic: "aura.kafkarator-canary-dev-gcp"
+        topic: "teamdokumenthandtering.aapen-dok-journalfoering-q1"
