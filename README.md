@@ -4,7 +4,7 @@ Get Docker ([Desktop](https://www.docker.com/products/docker-desktop)).
 
 Start a stack with Zookeeper, Kafka and a topic initializer.
    ```
-   > docker compose -f .docker/docker-compose-localhost.yaml up
+   > docker compose up
    ``` 
 Wait for a message saying "_Ready to go!_"
 
