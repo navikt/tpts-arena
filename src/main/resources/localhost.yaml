@@ -38,4 +38,4 @@ app:
   arena:
     kafka:
       consumer:
-        topic: "aura.kafkarator-canary-dev-gcp"
+        topic: "tpts-arena-localhost-topic"
