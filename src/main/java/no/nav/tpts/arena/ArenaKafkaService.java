@@ -23,7 +23,18 @@ public class ArenaKafkaService {
     @KafkaListener(topics = "${app.arena.kafka.consumer.topic}")
     public void consume(@Payload JournalfoeringHendelseRecord content) {
         log.info("Received content {} from topic {}", content, topic);
-        queue.put(content);
+        queue.put(new JoarkRecord(
+                content.getBehandlingstema(),
+                content.getHendelsesId(),
+                content.getHendelsesType(),
+                content.getJournalpostId(),
+                content.getJournalpostStatus(),
+                content.getKanalReferanseId(),
+                content.getMottaksKanal(),
+                content.getTemaGammelt(),
+                content.getTemaNytt(),
+                content.getVersjon()
+        ));
     }
 
 }
