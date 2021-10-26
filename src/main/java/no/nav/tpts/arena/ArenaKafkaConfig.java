@@ -1,9 +1,7 @@
 package no.nav.tpts.arena;
 
 import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -14,30 +12,22 @@ import org.springframework.kafka.listener.ConcurrentMessageListenerContainer;
 
 @Configuration
 @EnableKafka
-@ConfigurationProperties(prefix = "app.arena.kafka")
-@Getter
-@Setter
 public class ArenaKafkaConfig {
 
-    @NonNull
-    private Consumer consumer;
-
+    @Value("${app.arena.kafka.consumer.topic}")
     @Getter
-    @Setter
-    public static class Consumer {
-
-        @NonNull
-        private String topic;
-
-        private String[] validators;
-
-    }
+    private String consumerTopic;
 
     @Bean
     public KafkaListenerContainerFactory<ConcurrentMessageListenerContainer<String, Object>> kafkaListenerContainerFactory(ConsumerFactory<String, Object> consumerFactory) {
         final ConcurrentKafkaListenerContainerFactory<String, Object> containerFactory = new ConcurrentKafkaListenerContainerFactory<>();
         containerFactory.setConsumerFactory(consumerFactory);
         return containerFactory;
+    }
+
+    @Bean
+    public ArenaKafkaService arenaKafkaService() {
+        return new ArenaKafkaService(consumerTopic);
     }
 
 }

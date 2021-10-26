@@ -1,7 +1,6 @@
 package no.nav.tpts.arena;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,13 +15,8 @@ public class ArenaKafkaController {
     private final ArenaKafkaService consumer;
 
     @GetMapping
-    public Collection<String> getCachedContent() {
+    public Collection<Object> getCachedContent() {
         return consumer.getContent();
-    }
-
-    @DeleteMapping
-    public void deleteCachedContent() {
-        consumer.deleteContent();
     }
 
 }

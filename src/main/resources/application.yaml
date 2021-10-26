@@ -11,7 +11,7 @@ spring:
       enable-auto-commit: true
       group-id: ${spring.application.name}
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -27,6 +27,11 @@ spring:
           type: "PKCS12"
           location: ${KAFKA_TRUSTSTORE_PATH}
           password: ${KAFKA_CREDSTORE_PASSWORD}
+      specific.avro.reader: true
+      schema.registry.url: ${KAFKA_SCHEMA_REGISTRY}
+      basic.auth:
+        credentials.source: USER_INFO
+        user.info: ${KAFKA_SCHEMA_REGISTRY_USER}:${KAFKA_SCHEMA_REGISTRY_PASSWORD}
 
 server:
   shutdown: graceful
