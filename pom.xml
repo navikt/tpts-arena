@@ -16,7 +16,7 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
-        <java.version>16</java.version>
+        <java.version>17</java.version>
 
         <avro.version>1.10.2</avro.version>
         <joark.version>67a9be4476b63b7247cfacfaf821ab656bd2a952</joark.version>
