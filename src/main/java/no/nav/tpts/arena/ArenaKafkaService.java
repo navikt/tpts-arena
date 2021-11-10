@@ -14,7 +14,7 @@ import java.util.List;
 public class ArenaKafkaService {
 
     private final String topic;
-    private final SimpleCircularQueue<Object> queue = new SimpleCircularQueue<>(10);
+    private final SimpleCircularQueue<Object> queue = new SimpleCircularQueue<>(20);
 
     List<Object> getContent() {
         return queue.getAll();
