@@ -12,6 +12,9 @@ spec:
     min: 1
   ingresses:
     - https://tpts-arena.dev.intern.nav.no
+  azure:
+    application:
+      enabled: true
   kafka:
     pool: nav-dev
   liveness:
