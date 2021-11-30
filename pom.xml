@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.5</version>
+        <version>2.6.1</version>
         <relativePath/>
     </parent>
 
@@ -19,11 +19,15 @@
         <java.version>17</java.version>
 
         <avro.version>1.11.0</avro.version>
+        <javax.jws-api.version>1.1</javax.jws-api.version>
+        <jaxws-ri.version>3.0.2</jaxws-ri.version>
         <joark.version>67a9be4476b63b7247cfacfaf821ab656bd2a952</joark.version>
         <kafka-avro-serializer.version>6.2.1</kafka-avro-serializer.version>
-        <logstash.version>6.6</logstash.version>
+        <logstash.version>7.0</logstash.version>
         <swagger.version>3.0.0</swagger.version>
-        <testcontainers.version>1.16.0</testcontainers.version>
+        <testcontainers.version>1.16.2</testcontainers.version>
+
+        <cxf-codegen-plugin.version>3.4.5</cxf-codegen-plugin.version>
     </properties>
 
     <repositories>
@@ -93,6 +97,18 @@
         </dependency>
 
         <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-ri</artifactId>
+            <version>${jaxws-ri.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>javax.jws</groupId>
+            <artifactId>javax.jws-api</artifactId>
+            <version>${javax.jws-api.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>net.logstash.logback</groupId>
             <artifactId>logstash-logback-encoder</artifactId>
             <version>${logstash.version}</version>
@@ -149,6 +165,31 @@
                         </exclude>
                     </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${cxf-codegen-plugin.version}</version>
+                <configuration>
+                    <additionalJvmArgs>-Dlogback.configurationFile=${project.basedir}/src/test/resources/logback-test.xml</additionalJvmArgs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <sourceRoot>${project.build.directory}/generated-sources/cxf</sourceRoot>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>${basedir}/src/main/resources/arena/no/nav/virksomhet/tjenester/ytelse/arbeidogaktivitet/v1/Binding.wsdl</wsdl>
+                                </wsdlOption>
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
