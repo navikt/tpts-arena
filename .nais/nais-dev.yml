@@ -15,6 +15,11 @@ spec:
   azure:
     application:
       enabled: true
+  gcp:
+    sqlInstances:
+      - type: POSTGRES_12
+        databases:
+          - name: db
   kafka:
     pool: nav-dev
   liveness:
