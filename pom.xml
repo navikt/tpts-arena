@@ -23,8 +23,9 @@
         <jaxws-ri.version>3.0.2</jaxws-ri.version>
         <joark.version>67a9be4476b63b7247cfacfaf821ab656bd2a952</joark.version>
         <kafka-avro-serializer.version>6.2.1</kafka-avro-serializer.version>
-        <logstash.version>7.0</logstash.version>
-        <swagger.version>3.0.0</swagger.version>
+        <logstash.version>7.0.1</logstash.version>
+        <log4j2.version>2.15.0</log4j2.version>
+        <springdoc.version>1.6.0</springdoc.version>
         <testcontainers.version>1.16.2</testcontainers.version>
 
         <cxf-codegen-plugin.version>3.4.5</cxf-codegen-plugin.version>
@@ -42,27 +43,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <exclusions>
-		<exclusion>
-			<groupId>org.apache.logging.log4j</groupId>
-            		<artifactId>log4j-api</artifactId>
-		</exclusion>
-		<exclusion>
-			<groupId>org.apache.logging.log4j</groupId>
-            		<artifactId>log4j-to-slf4j</artifactId>
-		</exclusion>
-	    </exclusions>
 	</dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-	    <version>2.15.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-to-slf4j</artifactId>
-	    <version>2.15.0</version>
-        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -136,14 +117,9 @@
         </dependency>
 
         <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-boot-starter</artifactId>
-            <version>${swagger.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${swagger.version}</version>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-ui</artifactId>
+            <version>${springdoc.version}</version>
         </dependency>
 
         <dependency>
