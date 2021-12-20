@@ -24,7 +24,7 @@
         <joark.version>67a9be4476b63b7247cfacfaf821ab656bd2a952</joark.version>
         <kafka-avro-serializer.version>6.2.1</kafka-avro-serializer.version>
         <logstash.version>7.0.1</logstash.version>
-        <log4j2.version>2.16.0</log4j2.version>
+        <log4j2.version>2.17.0</log4j2.version>
         <springdoc.version>1.6.0</springdoc.version>
         <testcontainers.version>1.16.2</testcontainers.version>
 
