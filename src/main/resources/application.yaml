@@ -3,6 +3,12 @@ spring:
     name: "tpts-arena"
   main:
     banner-mode: off
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${AZURE_JWKS_URI}
+          jwk-set-uri: ${AZURE_ISSUER}
 
 server:
   shutdown: graceful
