@@ -39,3 +39,10 @@ app:
     kafka:
       consumer:
         topic: "tpts-arena-localhost-topic"
+    soap:
+      sts:
+        url: "https://security-token-service.dev.adeo.no/.well-known/openid-configuration"
+        username: "username"
+        password: "password"
+      endpoints:
+        ytelseskontrakt: "https://arena-q1.adeo.no/ail_ws/Ytelseskontrakt_v3"
