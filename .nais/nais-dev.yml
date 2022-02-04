@@ -12,6 +12,7 @@ spec:
     min: 1
   ingresses:
     - https://tpts-arena.dev.intern.nav.no
+    - https://tpts-arena.dev-fss-pub.nais.io
   azure:
     application:
       enabled: true
