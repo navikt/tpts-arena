@@ -4,11 +4,11 @@ spring:
   main:
     banner-mode: off
   security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: ${AZURE_JWKS_URI}
-          jwk-set-uri: ${AZURE_ISSUER}
+   oauth2:
+     resourceserver:
+       jwt:
+         issuer-uri: ${AZURE_ISSUER}
+         jwk-set-uri: ${AZURE_JWKS_URI}
 
 server:
   shutdown: graceful
