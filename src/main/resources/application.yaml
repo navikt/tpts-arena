@@ -18,6 +18,9 @@ management:
         include: info, health, metrics, prometheus
 
 app:
+  azure:
+    clientId: ${AZURE_APP_CLIENT_ID}
+    tenantId: ${AZURE_APP_TENANT_ID}
   arena:
     soap:
       sts:

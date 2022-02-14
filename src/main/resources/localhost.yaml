@@ -35,6 +35,9 @@ logging:
   config: classpath:logback-localhost.xml
 
 app:
+  azure:
+    tenantId: "966ac572-f5b7-4bbe-aa88-c76419c0f851"
+    clientId: "428e091a-5645-4c44-bb89-bb844401a4f0"
   arena:
     kafka:
       consumer:
