@@ -24,7 +24,7 @@
         <jaxws-ri.version>3.0.2</jaxws-ri.version>
         <joark.version>67a9be4476b63b7247cfacfaf821ab656bd2a952</joark.version>
         <logstash.version>7.0.1</logstash.version>
-        <springdoc.version>1.6.5</springdoc.version>
+        <springdoc.version>1.6.6</springdoc.version>
         <testcontainers.version>1.16.3</testcontainers.version>
 
         <cxf-codegen-plugin.version>3.4.5</cxf-codegen-plugin.version>
