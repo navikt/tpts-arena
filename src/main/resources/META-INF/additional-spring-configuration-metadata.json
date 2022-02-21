@@ -1,4 +1,26 @@
 {
   "properties": [
+    {
+      "name": "app.arena.soap.sts.username",
+      "type": "java.lang.String",
+      "description": "System user name, retrieved from Vault (see NAIS manifest and init script)."
+    },
+    {
+      "name": "app.arena.soap.sts.password",
+      "type": "java.lang.String",
+      "description": "System user password, retrieved from Vault (see NAIS manifest and init script)."
+    },
+    {
+      "name": "app.arena.soap.sts.url",
+      "type": "java.net.URL",
+      "description": "URL to your friendly Security Token Service.",
+      "defaultValue": "https://security-token-service.dev.adeo.no/.well-known/openid-configuration"
+    },
+    {
+      "name": "app.arena.soap.endpoints.ytelseskontrakt",
+      "type": "java.net.URL",
+      "description": "URL to the endpoint for the web service Ytelseskontrakt_v3.",
+      "defaultValue": "https://arena-q1.adeo.no/ail_ws/Ytelseskontrakt_v3"
+    }
   ]
 }
