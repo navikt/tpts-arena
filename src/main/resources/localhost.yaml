@@ -22,23 +22,20 @@ spring:
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 management:
-  metrics:
-    export:
-      prometheus:
+  endpoint:
+    health:
+      probes:
         enabled: true
   endpoints:
     web:
       exposure:
-        include: info, health, metrics, prometheus
+        include: health, prometheus
 
 logging:
   config: classpath:logback-localhost.xml
 
 app:
   arena:
-    kafka:
-      consumer:
-        topic: "tpts-arena-localhost-topic"
     soap:
       sts:
         url: "https://security-token-service.dev.adeo.no/.well-known/openid-configuration"
