@@ -36,9 +36,6 @@ logging:
 
 app:
   arena:
-    kafka:
-      consumer:
-        topic: "tpts-arena-localhost-topic"
     soap:
       sts:
         url: "https://security-token-service.dev.adeo.no/.well-known/openid-configuration"
