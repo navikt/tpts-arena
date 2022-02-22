@@ -40,7 +40,8 @@ public class ArenaSoapConfig {
                 .wsdl("classpath:wsdl/tjenestespesifikasjon/no/nav/tjeneste/virksomhet/ytelseskontrakt/v3/Binding.wsdl")
                 .serviceName(new QName("http://nav.no/tjeneste/virksomhet/ytelseskontrakt/v3/Binding", "Ytelseskontrakt_v3"))
                 .endpointName(new QName("http://nav.no/tjeneste/virksomhet/ytelseskontrakt/v3/Binding", "Ytelseskontrakt_v3Port"))
-                .withHandler(new MDCOutHandler())
+                //.withHandler(new MDCOutHandler())
+                .withOutInterceptor(new LoggingOutInterceptor())
                 .address(ytelseskontraktUrl)
                 .configureStsForSystemUser(stsConfig)
                 .build();
