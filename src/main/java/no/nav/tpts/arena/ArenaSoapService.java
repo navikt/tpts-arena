@@ -16,11 +16,6 @@ public class ArenaSoapService {
 
     boolean ping() {
         try {
-            String token = sts.getAccessToken();
-            if (token != null)
-                token = token.substring(0, 10);
-            log.info("STS test: Got token {}", token);
-
             service.ping();
             return true;
         } catch (Exception e) {
