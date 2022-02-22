@@ -8,10 +8,6 @@ server:
   shutdown: graceful
 
 management:
-  metrics:
-    export:
-      prometheus:
-        enabled: true
   endpoint:
     health:
       probes:
@@ -19,7 +15,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: info, health, metrics, prometheus
+        include: health, prometheus
 
 app:
   arena:

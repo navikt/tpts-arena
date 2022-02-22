@@ -22,10 +22,6 @@ spring:
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 management:
-  metrics:
-    export:
-      prometheus:
-        enabled: true
   endpoint:
     health:
       probes:
@@ -33,7 +29,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: info, health, metrics, prometheus
+        include: health, prometheus
 
 logging:
   config: classpath:logback-localhost.xml
