@@ -22,7 +22,7 @@ app:
     soap:
       sts:
         url: "https://security-token-service.nais.preprod.local/rest/v1/sts/token"
-        username: $SERVICEUSER_USERNAME
-        password: $SERVICEUSER_PASSWORD
+        username: ${SERVICEUSER_USERNAME}
+        password: ${SERVICEUSER_PASSWORD}
       endpoints:
         ytelseskontrakt: "https://arena-q1.adeo.no/ail_ws/Ytelseskontrakt_v3"

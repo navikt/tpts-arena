@@ -29,7 +29,7 @@ public class ArenaSoapConfig {
 
     @Bean
     StsConfig stsConfig() {
-        log.info("Using URL {} for STS", stsUrl);
+        log.info("Using username@URL {}@{} for STS", stsUsername, stsUrl);
         return StsConfig.builder()
                 .url(stsUrl)
                 .username(stsUsername)
