@@ -42,7 +42,6 @@ public class ArenaSoapConfig {
                 .endpointName(new QName("http://nav.no/tjeneste/virksomhet/ytelseskontrakt/v3/Binding", "Ytelseskontrakt_v3Port"))
                 .withHandler(new MDCOutHandler())
                 .address(ytelseskontraktUrl)
-                .withOutInterceptor(new LoggingOutInterceptor())
                 .configureStsForSystemUser(stsConfig)
                 .build();
     }
