@@ -10,6 +10,12 @@ spec:
   replicas:
     max: 1
     min: 1
+  accessPolicy:
+    inbound:
+      rules:
+        - application: tpts-tiltakspenger-mottak
+          namespace: tpts
+          cluster: dev-gcp
   ingresses:
     - https://tpts-arena.dev.intern.nav.no
     - https://tpts-arena.dev-fss-pub.nais.io
