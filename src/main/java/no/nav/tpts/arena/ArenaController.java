@@ -3,11 +3,12 @@ package no.nav.tpts.arena;
 import lombok.RequiredArgsConstructor;
 import no.nav.security.token.support.core.api.Protected;
 import no.nav.security.token.support.core.api.Unprotected;
+import no.nav.tjeneste.virksomhet.ytelseskontrakt.v3.informasjon.ytelseskontrakt.Ytelseskontrakt;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 @Protected
 @RestController
@@ -23,6 +24,12 @@ public class ArenaController {
         if (!service.ping()) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Failed to ping");
         }
+    }
+
+    @Protected
+    @GetMapping("soap/ytelser/{fnr}")
+    public List<Ytelseskontrakt> getYtelser(@PathVariable String fnr, @RequestParam(required = false) String fom, @RequestParam(required = false) String tom) {
+        return service.getYtelser(fnr, fom, tom);
     }
 
 }
