@@ -43,3 +43,9 @@ app:
         password: "password"
       endpoints:
         ytelseskontrakt: "https://arena-q1.adeo.no/ail_ws/Ytelseskontrakt_v3"
+
+no.nav.security.jwt:
+  issuer:
+    azure:
+      discoveryurl: ${AZURE_APP_WELL_KNOWN_URL}
+      accepted_audience: ${AZURE_APP_CLIENT_ID}
