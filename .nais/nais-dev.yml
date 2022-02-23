@@ -24,6 +24,9 @@ spec:
   prometheus:
     enabled: true
     path: /actuator/prometheus
+  azure:
+    application:
+      enabled: true
   vault:
     enabled: true
     paths:
