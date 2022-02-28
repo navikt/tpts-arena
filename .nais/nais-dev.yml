@@ -34,7 +34,7 @@ spec:
     application:
       enabled: true
     replyURLs:
-      - "http:localhost:8080/swagger-ui/oauth2-redirect"
+      - "http://localhost:8080/swagger-ui/oauth2-redirect"
   webproxy: true
   vault:
     enabled: true
