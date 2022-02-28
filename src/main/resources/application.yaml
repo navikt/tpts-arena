@@ -18,6 +18,10 @@ management:
         include: health, prometheus
 
 app:
+  azure:
+    tenantId: ${AZURE_APP_TENANT_ID}
+    clientId: ${AZURE_APP_CLIENT_ID}
+    wellKnown: ${AZURE_APP_WELL_KNOWN_URL}
   arena:
     soap:
       sts:
