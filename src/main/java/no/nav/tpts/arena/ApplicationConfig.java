@@ -7,5 +7,5 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableJwtTokenValidation(ignore = { "org.springdoc" })
+@EnableJwtTokenValidation(ignore = { "org.springdoc", "org.springframework" })
 public class ApplicationConfig {}
