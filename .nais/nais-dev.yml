@@ -33,6 +33,8 @@ spec:
   azure:
     application:
       enabled: true
+    replyURLs:
+      - "http:localhost:8080"
   vault:
     enabled: true
     paths:
