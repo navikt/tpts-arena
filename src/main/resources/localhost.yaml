@@ -35,10 +35,14 @@ logging:
   config: classpath:logback-localhost.xml
 
 app:
+  azure:
+    tenantId: ${AZURE_APP_TENANT_ID}
+    clientId: ${AZURE_APP_CLIENT_ID}
+    wellKnown: ${AZURE_APP_WELL_KNOWN_URL}
   arena:
     soap:
       sts:
-        url: "https://security-token-service.dev.adeo.no/.well-known/openid-configuration"
+        url: "https://security-token-service.nais.preprod.local/rest/v1/sts/token" # "https://sts-q1.preprod.local/SecurityTokenServiceProvider/"
         username: "username"
         password: "password"
       endpoints:
