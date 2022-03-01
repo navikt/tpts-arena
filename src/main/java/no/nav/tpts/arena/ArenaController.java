@@ -3,7 +3,8 @@ package no.nav.tpts.arena;
 import lombok.RequiredArgsConstructor;
 import no.nav.security.token.support.core.api.Protected;
 import no.nav.security.token.support.core.api.Unprotected;
-import no.nav.tjeneste.virksomhet.ytelseskontrakt.v3.informasjon.ytelseskontrakt.Ytelseskontrakt;
+import no.nav.security.token.support.spring.api.EnableJwtTokenValidation;
+import no.nav.tpts.arena.ytelser.YtelseSak;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -28,8 +29,8 @@ public class ArenaController {
 
     @Protected
     @GetMapping("soap/ytelser/{fnr}")
-    public List<Ytelseskontrakt> getYtelser(@PathVariable String fnr, @RequestParam(required = false) String fom, @RequestParam(required = false) String tom) {
-        return service.getYtelser(fnr, fom, tom);
+    public List<YtelseSak> getYtelser(@PathVariable String fnr, @RequestParam(required = false) String fom, @RequestParam(required = false) String tom) {
+        return YtelseSak.of(service.getYtelser(fnr, fom, tom));
     }
 
 }

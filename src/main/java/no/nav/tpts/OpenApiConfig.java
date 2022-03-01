@@ -2,6 +2,9 @@ package no.nav.tpts;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.security.OAuthFlow;
+import io.swagger.v3.oas.models.security.OAuthFlows;
+import io.swagger.v3.oas.models.security.Scopes;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import no.nav.security.token.support.core.api.Unprotected;
 import org.springdoc.webmvc.ui.SwaggerConfigResource;
@@ -27,12 +30,20 @@ public class OpenApiConfig {
         return new OpenAPI()
             .components(
                 new Components()
-                    .addSecuritySchemes("bearerAuth",
+                    .addSecuritySchemes("oauth",
                         new SecurityScheme()
-                            .type(SecurityScheme.Type.OPENIDCONNECT)
-                            .openIdConnectUrl(openidConnectUrl)
-                            .scheme("bearer")
-                            .bearerFormat("JWT")
+                        .type(SecurityScheme.Type.OAUTH2)
+                        .flows(new OAuthFlows()
+                            .authorizationCode(
+                                new OAuthFlow()
+                                    .authorizationUrl("https://login.microsoftonline.com/966ac572-f5b7-4bbe-aa88-c76419c0f851/oauth2/v2.0/authorize")
+                                    .scopes(new Scopes().addString(getScope(), "api-access"))
+                                    .tokenUrl("https://login.microsoftonline.com/966ac572-f5b7-4bbe-aa88-c76419c0f851/oauth2/v2.0/token")
+                            )
+                        )
+                        .openIdConnectUrl(openidConnectUrl)
+                        .scheme("bearer")
+                        .bearerFormat("JWT")
                     )
             );
     }
