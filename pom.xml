@@ -19,7 +19,7 @@
         <java.version>17</java.version>
 
         <cxf-rt-features.version>3.5.1</cxf-rt-features.version>
-        <cxf-spring-boot-starter.version>3.5.0</cxf-spring-boot-starter.version>
+        <cxf-spring-boot-starter.version>3.5.1</cxf-spring-boot-starter.version>
         <common-java-modules.version>2.2022.02.18_14.38-8d8bb494bd41</common-java-modules.version>
         <javax.jws-api.version>1.1</javax.jws-api.version>
         <jaxws-ri.version>3.0.2</jaxws-ri.version>
