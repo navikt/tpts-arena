@@ -48,7 +48,7 @@ app:
   arena:
     soap:
       sts:
-        url: "https://security-token-service.nais.preprod.local/rest/v1/sts/token" # "https://sts-q1.preprod.local/SecurityTokenServiceProvider/"
+        url: "https://security-token-service.dev.adeo.no/rest/v1/sts/token"
         username: ${SERVICEUSER_USERNAME}
         password: ${SERVICEUSER_PASSWORD}
       endpoints:
