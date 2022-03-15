@@ -21,6 +21,12 @@
       "type": "java.net.URL",
       "description": "URL to the endpoint for the web service Ytelseskontrakt_v3.",
       "defaultValue": "https://arena-q1.adeo.no/ail_ws/Ytelseskontrakt_v3"
+    },
+    {
+      "name": "app.arena.soap.endpoints.tiltakogaktivitet",
+      "type": "java.net.URL",
+      "description": "URL to the endpoint for the web service Tiltakogaktivitet_V1.",
+      "defaultValue": "https://arena-q1.adeo.no/ail_ws/Tiltakogaktivitet_V1"
     }
   ]
 }
