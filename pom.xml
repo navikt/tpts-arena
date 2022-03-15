@@ -27,7 +27,7 @@
         <logstash.version>7.0.1</logstash.version>
         <springdoc.version>1.6.6</springdoc.version>
         <testcontainers.version>1.16.3</testcontainers.version>
-        <token-support.version>2.0.0</token-support.version>
+        <token-support.version>2.0.11</token-support.version>
 
         <cxf-codegen-plugin.version>3.5.1</cxf-codegen-plugin.version>
     </properties>
