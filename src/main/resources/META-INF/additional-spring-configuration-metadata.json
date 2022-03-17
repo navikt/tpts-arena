@@ -21,6 +21,21 @@
       "type": "java.net.URL",
       "description": "URL to the endpoint for the web service Ytelseskontrakt_v3.",
       "defaultValue": "https://arena-q1.adeo.no/ail_ws/Ytelseskontrakt_v3"
+    },
+    {
+      "name": "app.azure.tenantId",
+      "type": "java.lang.String",
+      "description": "Azure AD tenant ID."
+    },
+    {
+      "name": "app.azure.clientId",
+      "type": "java.lang.String",
+      "description": "Azure AD client ID."
+    },
+    {
+      "name": "app.azure.wellKnown",
+      "type": "java.lang.String",
+      "description": "Azure AD well-known endpoint URL."
     }
   ]
 }
