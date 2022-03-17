@@ -36,6 +36,7 @@ no.nav.security.jwt:
     azure:
       discoveryurl: ${AZURE_APP_WELL_KNOWN_URL}
       accepted_audience: ${AZURE_APP_CLIENT_ID}
+      cookie_name: "tpts-nav"
 
 springdoc:
   swagger-ui:
