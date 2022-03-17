@@ -44,3 +44,4 @@ springdoc:
       client-secret: ${AZURE_APP_CLIENT_SECRET}
       scopes:
         - "api://${AZURE_APP_CLIENT_ID}/.default"
+    oauth2-redirect-url: "https://tpts-arena.dev.intern.nav.no/oauth2/callback"
