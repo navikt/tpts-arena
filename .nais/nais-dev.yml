@@ -33,10 +33,6 @@ spec:
   azure:
     application:
       enabled: true
-      replyURLs:
-        - "https://tpts-arena.dev.intern.nav.no/swagger-ui/oauth2-redirect.html"
-        - "http://localhost/swagger-ui/oauth2-redirect.html"
-      singlePageApplication: true
   webproxy: true
   vault:
     enabled: true
