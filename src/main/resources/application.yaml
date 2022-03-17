@@ -41,7 +41,6 @@ springdoc:
   swagger-ui:
     oauth:
       client-id: ${AZURE_APP_CLIENT_ID}
-      client-secret: ${AZURE_APP_CLIENT_SECRET}
       scopes:
         - "api://${AZURE_APP_CLIENT_ID}/.default"
       use-pkce-with-authorization-code-grant: true
