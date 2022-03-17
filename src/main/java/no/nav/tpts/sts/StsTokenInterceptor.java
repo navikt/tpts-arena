@@ -69,9 +69,9 @@ public class StsTokenInterceptor extends SamlTokenInterceptor {
     @Override
     protected void addToken(SoapMessage message) {
         message.put(SecurityConstants.STS_CLIENT, getOrCreateSTSClient(message.getExchange().getBus()));
-        log.debug("make STS request with service user.");
         message.put(SecurityConstants.CACHE_ISSUED_TOKEN_IN_ENDPOINT, true);
         SecurityToken securityToken = STSTokenRetriever.getToken(message, tokenParams, stsTokenCacher);
+        log.info("Got security token with ID {} from STS at {}", securityToken.getId(), url);
         //appends the received token to the request for the actual service
         try {
             Header header = findSecurityHeader(message, true);
