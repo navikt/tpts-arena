@@ -36,3 +36,11 @@ no.nav.security.jwt:
     azure:
       discoveryurl: ${AZURE_APP_WELL_KNOWN_URL}
       accepted_audience: ${AZURE_APP_CLIENT_ID}
+
+springdoc:
+  swagger-ui:
+    oauth:
+      client-id: ${AZURE_APP_CLIENT_ID}
+      client-secret: ${AZURE_APP_CLIENT_SECRET}
+      scopes:
+        - "api://${AZURE_APP_CLIENT_ID}/.default"
