@@ -41,7 +41,7 @@ public class ArenaController {
         return "unprotected";
     }
 
-    @Unprotected
+    @Protected
     @GetMapping("soap/ytelser/{fnr}")
     public List<YtelseSak> getYtelser(@PathVariable String fnr, @RequestParam(required = false) String fom, @RequestParam(required = false) String tom) {
         return YtelseSak.of(service.getYtelser(fnr, fom, tom));
