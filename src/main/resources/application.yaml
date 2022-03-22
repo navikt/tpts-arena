@@ -35,4 +35,12 @@ no.nav.security.jwt:
   issuer:
     azure:
       discoveryurl: ${AZURE_APP_WELL_KNOWN_URL}
-      accepted_audience: ${AZURE_APP_CLIENT_ID}
+      accepted_audience: "api://${AZURE_APP_CLIENT_ID}/.default"
+
+springdoc:
+  swagger-ui:
+    oauth:
+      client-id: ${AZURE_APP_CLIENT_ID}
+      scopes:
+        - "api://${AZURE_APP_CLIENT_ID}/.default"
+      use-pkce-with-authorization-code-grant: true

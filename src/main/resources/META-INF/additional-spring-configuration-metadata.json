@@ -27,6 +27,21 @@
       "type": "java.net.URL",
       "description": "URL to the endpoint for the web service Tiltakogaktivitet_V1.",
       "defaultValue": "https://arena-q1.adeo.no/ail_ws/Tiltakogaktivitet_V1"
+    },
+    {
+      "name": "app.azure.tenantId",
+      "type": "java.lang.String",
+      "description": "Azure AD tenant ID."
+    },
+    {
+      "name": "app.azure.clientId",
+      "type": "java.lang.String",
+      "description": "Azure AD client ID."
+    },
+    {
+      "name": "app.azure.wellKnown",
+      "type": "java.lang.String",
+      "description": "Azure AD well-known endpoint URL."
     }
   ]
 }
