@@ -2,13 +2,19 @@ package no.nav.tpts.arena;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import no.nav.tjeneste.virksomhet.tiltakogaktivitet.v1.HentTiltakOgAktiviteterForBrukerPersonIkkeFunnet;
+import no.nav.tjeneste.virksomhet.tiltakogaktivitet.v1.HentTiltakOgAktiviteterForBrukerSikkerhetsbegrensning;
+import no.nav.tjeneste.virksomhet.tiltakogaktivitet.v1.HentTiltakOgAktiviteterForBrukerUgyldigInput;
+import no.nav.tjeneste.virksomhet.tiltakogaktivitet.v1.TiltakOgAktivitetV1;
+import no.nav.tjeneste.virksomhet.tiltakogaktivitet.v1.informasjon.Tiltaksaktivitet;
+import no.nav.tjeneste.virksomhet.tiltakogaktivitet.v1.meldinger.HentTiltakOgAktiviteterForBrukerRequest;
+import no.nav.tjeneste.virksomhet.tiltakogaktivitet.v1.meldinger.HentTiltakOgAktiviteterForBrukerResponse;
 import no.nav.tjeneste.virksomhet.ytelseskontrakt.v3.HentYtelseskontraktListeSikkerhetsbegrensning;
 import no.nav.tjeneste.virksomhet.ytelseskontrakt.v3.YtelseskontraktV3;
 import no.nav.tjeneste.virksomhet.ytelseskontrakt.v3.informasjon.ytelseskontrakt.Periode;
 import no.nav.tjeneste.virksomhet.ytelseskontrakt.v3.informasjon.ytelseskontrakt.Ytelseskontrakt;
 import no.nav.tjeneste.virksomhet.ytelseskontrakt.v3.meldinger.HentYtelseskontraktListeRequest;
 import no.nav.tjeneste.virksomhet.ytelseskontrakt.v3.meldinger.HentYtelseskontraktListeResponse;
-import no.nav.tpts.sts.StsService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -28,12 +34,12 @@ import java.util.List;
 @Slf4j
 public class ArenaSoapService {
 
-    private final YtelseskontraktV3 service;
-    private final StsService sts;
+    private final YtelseskontraktV3 ytelseskontraktV3Service;
+    private final TiltakOgAktivitetV1 tiltakOgAktivitetV1Service;
 
     boolean ping() {
         try {
-            service.ping();
+            ytelseskontraktV3Service.ping();
             return true;
         } catch (Exception e) {
             log.error("Failed to ping service", e);
@@ -64,7 +70,7 @@ public class ArenaSoapService {
         request.setPeriode(periode);
         request.setPersonidentifikator(fnr);
         try {
-            HentYtelseskontraktListeResponse response = service.hentYtelseskontraktListe(request);
+            HentYtelseskontraktListeResponse response = ytelseskontraktV3Service.hentYtelseskontraktListe(request);
             return response.getYtelseskontraktListe();
         } catch (HentYtelseskontraktListeSikkerhetsbegrensning exception) {
             log.error("HentYtelseskontraktListeSikkerhetsbegrensning feil:", exception);
@@ -72,4 +78,17 @@ public class ArenaSoapService {
         }
     }
 
+    public List<Tiltaksaktivitet> getTiltaksaktivitetListe(String fnr) {
+        HentTiltakOgAktiviteterForBrukerRequest request = new HentTiltakOgAktiviteterForBrukerRequest();
+        request.setPersonident(fnr);
+        try {
+            HentTiltakOgAktiviteterForBrukerResponse response = tiltakOgAktivitetV1Service.hentTiltakOgAktiviteterForBruker(request);
+            return response.getTiltaksaktivitetListe();
+        } catch (HentTiltakOgAktiviteterForBrukerSikkerhetsbegrensning |
+                HentTiltakOgAktiviteterForBrukerUgyldigInput |
+                HentTiltakOgAktiviteterForBrukerPersonIkkeFunnet exception) {
+            log.error("HentTiltakOgAktiviteterForBrukerSikkerhetsbegrensning feil:", exception);
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

@@ -3,6 +3,7 @@ package no.nav.tpts.arena;
 import lombok.RequiredArgsConstructor;
 import no.nav.security.token.support.core.api.Protected;
 import no.nav.security.token.support.core.api.Unprotected;
+import no.nav.tpts.arena.tiltakogaktiviteter.TiltakOgAktivitet;
 import no.nav.tpts.arena.ytelser.YtelseSak;
 import no.nav.tpts.sts.StsService;
 import org.springframework.http.HttpStatus;
@@ -46,6 +47,11 @@ public class ArenaController {
         return YtelseSak.of(service.getYtelser(fnr, fom, tom));
     }
 
+    @Protected
+    @GetMapping("soap/tiltakOgAktivitet/{fnr}")
+    public List<TiltakOgAktivitet> getTiltakOgAktivitet(@PathVariable String fnr) {
+        return TiltakOgAktivitet.of(service.getTiltaksaktivitetListe(fnr));
+    }
     @Unprotected
     @GetMapping("sts/token")
     public String getToken() {
