@@ -7,7 +7,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @SpringBootApplication
 @EnableConfigurationProperties
-@EnableJwtTokenValidation(ignore = { "org.springdoc", "org.springframework" })
+@EnableJwtTokenValidation(ignore = { "org.springdoc" })
 public class Application {
 
     public static void main(String[] args) {
