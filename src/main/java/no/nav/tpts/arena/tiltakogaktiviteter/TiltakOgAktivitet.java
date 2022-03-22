@@ -18,7 +18,6 @@ public class TiltakOgAktivitet {
     protected String aktivitetId;
     protected String tiltakLokaltNavn;
     protected String arrangoer;
-    protected String bedriftsnummer;
     protected Periode deltakelsePeriode;
     protected Float deltakelseProsent;
     protected Float antallDagerPerUke;
@@ -31,7 +30,6 @@ public class TiltakOgAktivitet {
                 tiltaksaktivitet ->
                         TiltakOgAktivitet.builder()
                         .aktivitetId(tiltaksaktivitet.getAktivitetId())
-                        .bedriftsnummer(tiltaksaktivitet.getBedriftsnummer())
                         .tiltakLokaltNavn(tiltaksaktivitet.getTiltakLokaltNavn())
                         .arrangoer(tiltaksaktivitet.getArrangoer())
                         .deltakelsePeriode(tiltaksaktivitet.getDeltakelsePeriode())

@@ -30,6 +30,12 @@ public class ArenaSoapConfig {
     @Value("${app.arena.soap.endpoints.tiltakogaktivitet")
     private String tiltakogaktivitetUrl;
 
+    StsConfig stsConfig = StsConfig.builder()
+            .url(stsUrl)
+            .username(stsUsername)
+            .password(stsPassword)
+            .build();
+
     @Bean
     public YtelseskontraktV3 ytelseskontraktV3() {
 
@@ -40,29 +46,13 @@ public class ArenaSoapConfig {
                 .endpointName(new QName("http://nav.no/tjeneste/virksomhet/ytelseskontrakt/v3/Binding", "Ytelseskontrakt_v3Port"))
                 .withOutInterceptor(new LoggingOutInterceptor())
                 .address(ytelseskontraktUrl)
-                .configureStsForSystemUser(StsConfig.builder()
-                        .url(stsUrl)
-                        .username(stsUsername)
-                        .password(stsPassword)
-                        .build())
+                .configureStsForSystemUser(stsConfig)
                 .build();
 
     }
 
     @Bean
-    public TiltakOgAktivitetV1 tiltakOgAktivitetV1(
-            @Value("${app.arena.soap.sts.url}")
-                    String url,
-            @Value("${app.arena.soap.sts.username}")
-                    String username,
-            @Value("${app.arena.soap.sts.password}")
-                    String password
-    ) {
-        StsConfig stsConfig = StsConfig.builder()
-                .url(url)
-                .username(username)
-                .password(password)
-                .build();
+    public TiltakOgAktivitetV1 tiltakOgAktivitetV1() {
         log.info("Using URL {} for service {}", tiltakogaktivitetUrl, TiltakOgAktivitetV1.class.getSimpleName());
         return new CXFClient<>(TiltakOgAktivitetV1.class)
                 .wsdl("classpath:wsdl/tjenestespesifikasjon/no/nav/tjeneste/virksomhet/tiltakogaktivitet/v1/Binding.wsdl")
