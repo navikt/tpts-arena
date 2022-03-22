@@ -19,6 +19,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.ws.rs.BadRequestException;
+import javax.ws.rs.ForbiddenException;
+import javax.ws.rs.NotFoundException;
 import javax.xml.datatype.DatatypeConfigurationException;
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
@@ -84,11 +87,15 @@ public class ArenaSoapService {
         try {
             HentTiltakOgAktiviteterForBrukerResponse response = tiltakOgAktivitetV1Service.hentTiltakOgAktiviteterForBruker(request);
             return response.getTiltaksaktivitetListe();
-        } catch (HentTiltakOgAktiviteterForBrukerSikkerhetsbegrensning |
-                HentTiltakOgAktiviteterForBrukerUgyldigInput |
-                HentTiltakOgAktiviteterForBrukerPersonIkkeFunnet exception) {
-            log.error("HentTiltakOgAktiviteterForBrukerSikkerhetsbegrensning feil:", exception);
-            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR);
+        } catch (HentTiltakOgAktiviteterForBrukerUgyldigInput exception) {
+            log.error("Ugyldig input:", exception);
+            throw new BadRequestException();
+        } catch (HentTiltakOgAktiviteterForBrukerSikkerhetsbegrensning exception) {
+            log.error("Systembruker har ikke tilgang:", exception);
+            throw new ForbiddenException();
+        } catch (HentTiltakOgAktiviteterForBrukerPersonIkkeFunnet exception) {
+            log.error("Person ikke funnet:", exception);
+            throw new NotFoundException();
         }
     }
 }
