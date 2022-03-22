@@ -53,6 +53,7 @@ app:
         password: ${SERVICEUSER_PASSWORD}
       endpoints:
         ytelseskontrakt: "https://arena-q1.adeo.no/ail_ws/Ytelseskontrakt_v3"
+        tiltakogaktivitet: "https://arena-q1.adeo.no/ail_ws/TiltakOgAktivitet_v1"
 
 no.nav.security.jwt:
   issuer:

@@ -154,7 +154,7 @@
                                     </wsdl>
                                 </wsdlOption>
                                 <wsdlOption>
-                                    <wsdl>${basedir}/src/main/resources/wsdl/tjenestespesifikasjon.no.nav.tjeneste.virksomhet.tiltakogaktivitet.v1/Binding.wsdl</wsdl>
+                                    <wsdl>${basedir}/src/main/resources/wsdl/tjenestespesifikasjon/no/nav/tjeneste/virksomhet/tiltakogaktivitet/v1/Binding.wsdl</wsdl>
                                 </wsdlOption>
                             </wsdlOptions>
                         </configuration>
