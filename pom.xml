@@ -29,7 +29,7 @@
         <testcontainers.version>1.16.3</testcontainers.version>
         <token-support.version>2.0.14</token-support.version>
 
-        <cxf-codegen-plugin.version>3.5.1</cxf-codegen-plugin.version>
+        <cxf-codegen-plugin.version>3.5.2</cxf-codegen-plugin.version>
     </properties>
 
     <repositories>
