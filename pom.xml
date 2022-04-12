@@ -18,7 +18,7 @@
     <properties>
         <java.version>17</java.version>
 
-        <cxf-rt-features.version>3.5.1</cxf-rt-features.version>
+        <cxf-rt-features.version>3.5.2</cxf-rt-features.version>
         <cxf-spring-boot-starter.version>3.5.1</cxf-spring-boot-starter.version>
         <common-java-modules.version>2.2022.04.11_07.31-bca292df5e64</common-java-modules.version>
         <javax.jws-api.version>1.1</javax.jws-api.version>
