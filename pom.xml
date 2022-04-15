@@ -23,7 +23,7 @@
         <javax.jws-api.version>1.1</javax.jws-api.version>
         <jaxws-ri.version>3.0.2</jaxws-ri.version>
         <joark.version>67a9be4476b63b7247cfacfaf821ab656bd2a952</joark.version>
-        <logstash.version>7.1</logstash.version>
+        <logstash.version>7.1.1</logstash.version>
         <springdoc.version>1.6.7</springdoc.version>
         <testcontainers.version>1.16.3</testcontainers.version>
         <token-support.version>2.0.14</token-support.version>
