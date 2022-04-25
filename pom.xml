@@ -26,7 +26,7 @@
         <logstash.version>7.1.1</logstash.version>
         <springdoc.version>1.6.7</springdoc.version>
         <testcontainers.version>1.16.3</testcontainers.version>
-        <token-support.version>2.0.14</token-support.version>
+        <token-support.version>2.0.15</token-support.version>
     </properties>
 
     <repositories>
