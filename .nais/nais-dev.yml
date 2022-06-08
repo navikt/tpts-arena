@@ -13,7 +13,7 @@ spec:
   accessPolicy:
     inbound:
       rules:
-        - application: tpts-tiltakspenger-mottak
+        - application: tiltakspenger-mottak
           namespace: tpts
           cluster: dev-gcp
   ingresses:
